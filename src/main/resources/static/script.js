@@ -1,10 +1,13 @@
-// script.js
-
 $(document).ready(function() {
     hentAlle(); // Henter alle billetter ved lasting av siden
 });
 
 function regKinobillett() {
+    // Validering
+    if (!validerOgRegKinobillett()) {
+        return;
+    }
+
     // Henter verdier fra input-feltene
     const kinobillett = {
         Fornavn: $("#fornavn").val(),
@@ -23,6 +26,45 @@ function regKinobillett() {
     $("#etternavn").val("");
     $("#telefonnr").val("");
     $("#epost").val("");
+}
+
+function validerOgRegKinobillett() {
+    // Henter verdier fra input-feltene
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const telefonnr = $("#telefonnr").val();
+    const epost = $("#epost").val();
+
+    // Validering
+    if (fornavn === "") {
+        $("#fornavn-feilmelding").text("Vennligst fyll ut fornavn").css("color", "red");
+        return false;
+    } else {
+        $("#fornavn-feilmelding").text("").css("color", "black");
+    }
+
+    if (etternavn === "") {
+        $("#etternavn-feilmelding").text("Vennligst fyll ut etternavn").css("color", "red");
+        return false;
+    } else {
+        $("#etternavn-feilmelding").text("").css("color", "black");
+    }
+
+    if (telefonnr === "") {
+        $("#telefonnr-feilmelding").text("Vennligst fyll ut telefonnummer").css("color", "red");
+        return false;
+    } else {
+        $("#telefonnr-feilmelding").text("").css("color", "black");
+    }
+
+    if (epost === "") {
+        $("#epost-feilmelding").text("Vennligst fyll ut e-postadresse").css("color", "red");
+        return false;
+    } else {
+        $("#epost-feilmelding").text("").css("color", "black");
+    }
+
+    return true;
 }
 
 function hentAlle() {
