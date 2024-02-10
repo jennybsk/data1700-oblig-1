@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestilling av kinobilletter</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      hentAlle(); // Henter alle billetter ved lasting av siden
+    });
+
+    function regKinobillett() {
+      // Henter verdier fra input-feltene
+      const kinobillett = {
+        Fornavn: $("#fornavn").val(),
+        Etternavn: $("#etternavn").val(),
+        Telefonnr: $("#telefonnr").val(),
+        Epost: $("#epost").val()
+      };
+
+      // Utfører en POST-request for å lagre billetten
+      $.post("/lagre", kinobillett, function() {
+        hentAlle(); // Oppdaterer listen etter at billetten er lagret
+      });
+
+      // Tømmer input-feltene
+      $("#fornavn").val("");
+      $("#etternavn").val("");
+      $("#telefonnr").val("");
+      $("#epost").val("");
+    }
+
+    function hentAlle() {
+      // Utfører en GET-request for å hente alle billetter
+      $.get("/hentAlle", function(kinobilletter) {
+        formaterData(kinobilletter); // Formaterer og viser billettene
+      });
+    }
+
+    function formaterData(kinobilletter) {
+      let ut = "<table><tr><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
+      // Går gjennom alle billetter og legger dem til i tabellen
+      for(const kinobillett of kinobilletter) {
+        ut += "<tr><td>" + kinobillett.Fornavn + "</td><td>" + kinobillett.Etternavn + "</td><td>" + kinobillett.Telefonnr + "</td><td>" + kinobillett.Epost + "</td></tr>";
+      }
+      ut += "</table>";
+      $("#kinobillettene").html(ut); // Setter inn tabellen i HTML-elementet
+    }
+
+    function slettAlle() {
+      // Utfører en GET-request for å slette alle billetter
+      $.get( "/slettAlle", function() {
+        hentAlle(); // Oppdaterer listen etter at alle billetter er slettet
+      });
+    }
+  </script>
+</head>
+<body>
+<h1>Bestilling av kinobilletter</h1>
+<!--https://www.w3schools.com/tags/tag_select.asp dropdown meny for valg av film-->
+<label for="filmer">Velg film:</label>
+<select name="filmer" id="filmer">
+  <option value="">Velg film her</option>
+  <option value="inception">Inception</option>
+  <option value="titanic">Titanic</option>
+  <option value="revenant">Revenant</option>
+  <option value="great gatsby">Great Gatsby</option>
+</select><br><br>
+<label for="antall">Antall billetter:</label>
+<input type="number" id="antall"><br><br>
+<table>
+  <tr>
+    <td>Fornavn</td>
+    <td><input type="text" id="fornavn"/></td>
+  </tr>
+  <tr>
+    <td>Etternavn</td>
+    <td><input type="text" id="etternavn"/></td>
+  </tr>
+  <tr>
+    <td>Telefonnr</td>
+    <td><input type="text" id="telefonnr"/></td>
+  </tr>
+  <tr>
+    <td>Epost</td>
+    <td><input type="text" id="epost"/></td>
+  </tr>
+</table>
+<button onclick="regKinobillett()">Kjøp billett</button><br>
+<div id="kinobillettene"></div>
+<tr>
+  <td><strong>Fornavn</strong></td>
+  <td><strong>Etternavn</strong></td>
+  <td><strong>Telefonnr</strong></td>
+  <td><strong>Epost</strong></td>
+</tr><br>
+<button onclick="slettAlle()">Slett alle billettene</button>
+</body>
+</html>
