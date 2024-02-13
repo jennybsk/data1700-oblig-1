@@ -1,10 +1,10 @@
 <script>
     $(document).ready(function() {
-    // Henter inn billetter ved lasting av siden
+    // Henter inn billetter ved ny lasting av siden
     hentAlle();
 });
 
-    // Oppretter array
+    // Oppretter array for billettregister
     const kinobillettRegister=[];
 
     // Skriver ut array med registrerte
@@ -14,19 +14,20 @@
     "</tr>";
     for (let kinobillett of kinobillettRegister){
     ut+="<tr>";
-    ut+="<td>" + kinobillett.film + "</td><td>" + kinobillett.antall + "</td><td>" + kinobillett.fornavn + "</td><td>" + kinobillett.etternavn + "</td><td>" + kinobillett.telefonnr + "</td><td>" + kinobillett.epost + "</td>";
+    ut+="<td>" + kinobillett.Film + "</td><td>" + kinobillett.Antall + "</td><td>" + kinobillett.Fornavn + "</td><td>" + kinobillett.Etternavn + "</td><td>" + kinobillett.Telefonnr + "</td><td>" + kinobillett.Epost + "</td>";
     ut+="</tr>";
 }
     document.getElementById("kinobillettRegister").innerHTML=ut;
 }
-    function regKinobillett() {
+
+function regKinobillett() {
     const kinobillett = {
-    Film: $("#film").val(),
-    Antall: $("#antall").val(),
-    Fornavn: $("#fornavn").val(),
-    Etternavn: $("#etternavn").val(),
-    Telefonnr: $("#telefonnr").val(),
-    Epost: $("#epost").val()
+        Film: $("#film").val(),
+        Antall: $("#antall").val(),
+        Fornavn: $("#fornavn").val(),
+        Etternavn: $("#etternavn").val(),
+        Telefonnr: $("#telefonnr").val(),
+        Epost: $("#epost").val()
 };
 
     // Registrerer den nye infoen i arrayet
@@ -44,8 +45,8 @@
     $("#epost").val("");
 }
 
-    function slettAlle() {
-    // Utfører en GET-request for å slette alle billetter
+function slettAlle() {
+    // Utfører GET-request for å slette alle billetter
     $.get( "/slettAlle", function() {
         hentAlle(); // Oppdaterer listen etter at alle billetter er slettet
     });

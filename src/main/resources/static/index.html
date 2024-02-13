@@ -19,14 +19,29 @@
   <option value="revenant">Revenant</option>
   <option value="great gatsby">Great Gatsby</option>
 </select><br><br>
-<label for="antall">Antall billetter:</label>
-<input type="number" id="antall">
+<label for="antall">Antall</label>
+<input type="number" id="antall"><br><br>
+
+<!--Input-bokser for bestilling av kinobillett-->
+<label for="fornavn">Fornavn</label>
+<input type="text" id="fornavn"><br><br>
+
+<label for="etternavn">Etternavn</label>
+<input type="text" id="etternavn"><br><br>
+
+<label for="telefonnr">Telefonnr</label>
+<input type="text" id="telefonnr"><br><br>
+
+<label for="epost">Epost</label>
+<input type="text" id="epost"><br><br>
+
+<!--Kjøp billett knapp-->
+<button onclick="visKinobillettRegister()">Kjøp billett</button><br>
 
 <!--Viser data i array-->
-<button onclick="visKinobillettRegister()">Kjøp billett</button><br>
 <div id="kinobillettRegister"></div>
 
-<!--Sletter data i array-->
+<!--Knapp for å slette all data i array-->
 <button onclick="slettAlle()">Slett alle billettene</button>
 </body>
 </html>
