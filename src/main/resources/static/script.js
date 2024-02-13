@@ -1,14 +1,14 @@
 <script type = "application/javascript"><</script>
 <script>
     $(document).ready(function() {
-    // henter inn billetter ved lasting av siden
+    // Henter inn billetter ved lasting av siden
     hentAlle();
 });
 
-    // oppretter array
+    // Oppretter array
     const kinobillettRegister=[];
 
-    // skriver ut array med registrerte
+    // Skriver ut array med registrerte
     function visKinobillettRegister() {
     let ut = "<table><tr>" +
     "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
@@ -30,13 +30,13 @@
     Epost: $("#epost").val()
 };
 
-    <!--registrerer den nye infoen i arrayet-->
+    // Registrerer den nye infoen i arrayet
     kinobillettRegister.push(kinobillett);
 
-    <!--viser den nye infoen i arrayet-->
+    // Viser den nye infoen i arrayet
     visKinobillettRegister();
 
-    <!--sletter info i inputboksene-->
+    // Sletter info i inputboksene
     $("#film").val("");
     $("#antall").val("");
     $("#fornavn").val("");
