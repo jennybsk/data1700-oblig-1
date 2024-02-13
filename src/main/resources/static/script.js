@@ -1,31 +1,20 @@
 $(document).ready(function() {
     hentAlle(); // Henter alle billetter ved lasting av siden
+
+    $('#kjop-skjema').submit(function(event) {
+        event.preventDefault(); // Forhindrer standard skjema-innsending
+        validerInput();
+    });
 });
 
-function regKinobillett() {
+function validerInput() {
+    // Fjerner eksisterende feilmeldinger
+    $(".feilmelding").text("").css("color", "red");
+
     // Validering
     if (!validerOgRegKinobillett()) {
         return;
     }
-
-    // Henter verdier fra input-feltene
-    const kinobillett = {
-        Fornavn: $("#fornavn").val(),
-        Etternavn: $("#etternavn").val(),
-        Telefonnr: $("#telefonnr").val(),
-        Epost: $("#epost").val()
-    };
-
-    // Utfører en POST-request for å lagre billetten
-    $.post("/lagre", kinobillett, function() {
-        hentAlle(); // Oppdaterer listen etter at billetten er lagret
-    });
-
-    // Tømmer input-feltene
-    $("#fornavn").val("");
-    $("#etternavn").val("");
-    $("#telefonnr").val("");
-    $("#epost").val("");
 }
 
 function validerOgRegKinobillett() {
@@ -64,7 +53,31 @@ function validerOgRegKinobillett() {
         $("#epost-feilmelding").text("").css("color", "black");
     }
 
+    // Hvis ingen feil, fortsett med å sende skjemaet
+    regKinobillett();
+
     return true;
+}
+
+function regKinobillett() {
+    // Henter verdier fra input-feltene
+    const kinobillett = {
+        Fornavn: $("#fornavn").val(),
+        Etternavn: $("#etternavn").val(),
+        Telefonnr: $("#telefonnr").val(),
+        Epost: $("#epost").val()
+    };
+
+    // Utfører en POST-request for å lagre billetten
+    $.post("/lagre", kinobillett, function() {
+        hentAlle(); // Oppdaterer listen etter at billetten er lagret
+    });
+
+    // Tømmer input-feltene
+    $("#fornavn").val("");
+    $("#etternavn").val("");
+    $("#telefonnr").val("");
+    $("#epost").val("");
 }
 
 function hentAlle() {
