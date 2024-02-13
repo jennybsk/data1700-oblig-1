@@ -1,11 +1,44 @@
-<script>
-    $(document).ready(function() {
-    // Henter inn billetter ved ny lasting av siden
-    hentAlle();
-});
-
     // Oppretter array for billettregister
     const kinobillettRegister=[];
+
+    // Velg film funksjon
+    function VelgFilmer() {
+    ut += "FilmValg : "+ document.getElementById("filmer").value;
+}
+
+    // Funksjon for antall billetter
+    function Antall() {
+        document.getElementById("Antall").value;
+    }
+
+    // Funksjon for kjøp av billett
+    function kjøpAvBillett() {
+        const film = document.getElementById("filmer").value;
+        const antall = document.getElementById("antall").value;
+        const fornavn = document.getElementById("fornavn").value;
+        const etternavn = document.getElementById("etternavn").value;
+        const telefonnr = document.getElementById("telefonnr").value;
+        const epost = document.getElementById("epost").value;
+
+        const registrert = {
+            film : film,
+            antall : antall,
+            fornavn : fornavn,
+            etternavn : etternavn,
+            telefonnr : telefonnr,
+            epost : epost,
+        };
+
+        // Tømmer input-boksene
+        kinobillettRegister.push(registrert);
+        document.getElementById("filmer").value="";
+        document.getElementById("antall").value="";
+        document.getElementById("fornavn").value="";
+        document.getElementById("etternavn").value="";
+        document.getElementById("telefonnr").value="";
+        document.getElementById("epost").value="";
+        visKinobillettRegister()
+    }
 
     // Skriver ut array med registrerte
     function visKinobillettRegister() {
@@ -22,7 +55,7 @@
 
 function regKinobillett() {
     const kinobillett = {
-        Film: $("#film").val(),
+        Film: $("#filmer").val(),
         Antall: $("#antall").val(),
         Fornavn: $("#fornavn").val(),
         Etternavn: $("#etternavn").val(),
@@ -37,7 +70,7 @@ function regKinobillett() {
     visKinobillettRegister();
 
     // Sletter info i inputboksene
-    $("#film").val("");
+    $("#filmer").val("");
     $("#antall").val("");
     $("#fornavn").val("");
     $("#etternavn").val("");

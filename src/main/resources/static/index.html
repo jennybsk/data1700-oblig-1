@@ -3,40 +3,35 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestilling av kinobilletter</title>
-  <script src = "Index.js"></script>
+  <script src="script.js"></script>
 </head>
 
 <body>
 <h1>Bestilling av kinobilletter</h1>
 <!--https://www.w3schools.com/tags/tag_select.asp dropdown meny for valg av film-->
 <label for="filmer">Velg film:</label>
-<select name="filmer" id="filmer">
-  <option value="">Velg film her</option>
-  <option value="inception">Inception</option>
-  <option value="titanic">Titanic</option>
-  <option value="revenant">Revenant</option>
-  <option value="great gatsby">Great Gatsby</option>
+<select id="filmer" onChange = "VelgFilm()">
+  <option>Velg film her</option>
+  <option>Inception</option>
+  <option>Titanic</option>
+  <option>Revenant</option>
+  <option>Great Gatsby</option>
 </select><br><br>
-<label for="antall">Antall</label>
-<input type="number" id="antall"><br><br>
 
 <!--Input-bokser for bestilling av kinobillett-->
-<label for="fornavn">Fornavn</label>
-<input type="text" id="fornavn"><br><br>
+<label for="antall">Antall</label>
+<input type="text" id="antall"><br><br>
 
-<label for="etternavn">Etternavn</label>
-<input type="text" id="etternavn"><br><br>
-
-<label for="telefonnr">Telefonnr</label>
-<input type="text" id="telefonnr"><br><br>
-
-<label for="epost">Epost</label>
-<input type="text" id="epost"><br><br>
+<table>
+  <tr><td>Fornavn</td><td> <input type="text" id ="fornavn"/></td><tr>
+  <tr><td>Etternavn</td><td> <input type="text" id ="etternavn"/></td><tr>
+  <tr><td>Telefonnr</td><td> <input type="text" id ="telefonnr"/></td><tr>
+  <tr><td>Epost</td><td> <input type="text" id ="epost"/></td><tr>
+</table>
 
 <!--Kjøp billett knapp-->
-<button onclick="visKinobillettRegister()">Kjøp billett</button><br>
+<button onclick="kjøpAvBillett()">Kjøp billett</button><br>
 
 <!--Viser data i array-->
 <div id="kinobillettRegister"></div>
@@ -44,4 +39,5 @@
 <!--Knapp for å slette all data i array-->
 <button onclick="slettAlle()">Slett alle billettene</button>
 </body>
+
 </html>
