@@ -1,4 +1,3 @@
-<script type = "application/javascript"><</script>
 <script>
     $(document).ready(function() {
     // Henter inn billetter ved lasting av siden

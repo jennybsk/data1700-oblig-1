@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestilling av kinobilletter</title>
+  <script src = "Index.js"></script>
 </head>
 
 <body>
@@ -21,32 +22,11 @@
 <label for="antall">Antall billetter:</label>
 <input type="number" id="antall">
 
-<!--feilmeldinger-->
-<span id="antall-feilmelding" style="color: red;"></span><br><br>
-<table>
-  <tr>
-    <td>Fornavn</td>
-    <td><input type="text" id="fornavn"><span id="fornavn-feilmelding" style="color: red;"></span></td>
-  </tr>
-  <tr>
-    <td>Etternavn</td>
-    <td><input type="text" id="etternavn"><span id="etternavn-feilmelding" style="color: red;"></span></td>
-  </tr>
-  <tr>
-    <td>Telefonnr</td>
-    <td><input type="text" id="telefonnr"><span id="telefonnr-feilmelding" style="color: red;"></span></td>
-  </tr>
-  <tr>
-    <td>Epost</td>
-    <td><input type="text" id="epost"><span id="epost-feilmelding" style="color: red;"></span></td>
-  </tr>
-</table>
-
-<!--viser data i array-->
+<!--Viser data i array-->
 <button onclick="visKinobillettRegister()">Kjøp billett</button><br>
 <div id="kinobillettRegister"></div>
 
-<!--sletter data i array-->
+<!--Sletter data i array-->
 <button onclick="slettAlle()">Slett alle billettene</button>
 </body>
 </html>
