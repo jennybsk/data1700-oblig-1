@@ -21,7 +21,7 @@
               "</tr>";
       for (let kinobillett of kinobillettRegister){
         ut+="<tr>";
-        ut+="<td>" + billett.film + "</td><td>" + billett.antall + "</td><td>" + billett.fornavn + "</td><td>" + billett.etternavn + "</td><td>" + billett.telefonnr + "</td><td>" + billett.epost + "</td>";
+        ut+="<td>" + kinobillett.film + "</td><td>" + kinobillett.antall + "</td><td>" + kinobillett.fornavn + "</td><td>" + kinobillett.etternavn + "</td><td>" + kinobillett.telefonnr + "</td><td>" + kinobillett.epost + "</td>";
         ut+="</tr>";
       }
       document.getElementById("kinobillettRegister").innerHTML=ut;
@@ -29,6 +29,8 @@
     function regKinobillett() {
       // Henter verdier fra input-feltene
       const kinobillett = {
+        Film: $("#film").val(),
+        Antall: $("#antall").val(),
         Fornavn: $("#fornavn").val(),
         Etternavn: $("#etternavn").val(),
         Telefonnr: $("#telefonnr").val(),
@@ -85,6 +87,8 @@
 </select><br><br>
 <label for="antall">Antall billetter:</label>
 <input type="number" id="antall">
+
+<!--feilmeldinger-->
 <span id="antall-feilmelding" style="color: red;"></span><br><br>
 <table>
   <tr>
@@ -105,9 +109,14 @@
   </tr>
 </table>
 
-<!--registrer data i array-->
+<!--registrerer den nye infoen i arrayet-->
+kinobillettRegister.push(kinobillett);
+
+<!--viser data i array-->
 <button onclick="visKinobillettRegister()">Kjøp billett</button><br>
 <div id="kinobillettRegister"></div>
+
+<!--sletter data i array-->
 <button onclick="slettAlle()">Slett alle billettene</button>
 </body>
 </html>
