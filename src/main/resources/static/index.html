@@ -7,9 +7,25 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script>
     $(document).ready(function() {
-      hentAlle(); // Henter alle billetter ved lasting av siden
+      // henter inn billetter ved lasting av siden
+      hentAlle();
     });
 
+    // oppretter array
+    const kinobillettRegister=[];
+
+    // skriver ut array med registrerte
+    function visKinobillettRegister() {
+      let ut = "<table><tr>" +
+              "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
+              "</tr>";
+      for (let kinobillett of kinobillettRegister){
+        ut+="<tr>";
+        ut+="<td>" + billett.film + "</td><td>" + billett.antall + "</td><td>" + billett.fornavn + "</td><td>" + billett.etternavn + "</td><td>" + billett.telefonnr + "</td><td>" + billett.epost + "</td>";
+        ut+="</tr>";
+      }
+      document.getElementById("kinobillettRegister").innerHTML=ut;
+    }
     function regKinobillett() {
       // Henter verdier fra input-feltene
       const kinobillett = {
