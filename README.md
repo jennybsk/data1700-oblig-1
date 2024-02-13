@@ -4,7 +4,7 @@ Oblig 1
 
 OsloMet brukernavn: jekje9380
 
-GitHub brukernavn: jennybs
+GitHub brukernavn: jennybsk
 
 GitHub repo URL: https://github.com/jennybsk/data1700-oblig-1.git
 
