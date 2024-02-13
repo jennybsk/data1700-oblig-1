@@ -1,81 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestilling av kinobilletter</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // henter inn billetter ved lasting av siden
-      hentAlle();
-    });
-
-    // oppretter array
-    const kinobillettRegister=[];
-
-    // skriver ut array med registrerte
-    function visKinobillettRegister() {
-      let ut = "<table><tr>" +
-              "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
-              "</tr>";
-      for (let kinobillett of kinobillettRegister){
-        ut+="<tr>";
-        ut+="<td>" + kinobillett.film + "</td><td>" + kinobillett.antall + "</td><td>" + kinobillett.fornavn + "</td><td>" + kinobillett.etternavn + "</td><td>" + kinobillett.telefonnr + "</td><td>" + kinobillett.epost + "</td>";
-        ut+="</tr>";
-      }
-      document.getElementById("kinobillettRegister").innerHTML=ut;
-    }
-    function regKinobillett() {
-      // Henter verdier fra input-feltene
-      const kinobillett = {
-        Film: $("#film").val(),
-        Antall: $("#antall").val(),
-        Fornavn: $("#fornavn").val(),
-        Etternavn: $("#etternavn").val(),
-        Telefonnr: $("#telefonnr").val(),
-        Epost: $("#epost").val()
-      };
-
-      // Utfører en POST-request for å lagre billetten
-      $.post("/lagre", kinobillett, function() {
-        hentAlle(); // Oppdaterer listen etter at billetten er lagret
-      });
-
-      // Tømmer input-feltene
-      $("#film").val("");
-      $("#antall").val("");
-      $("#fornavn").val("");
-      $("#etternavn").val("");
-      $("#telefonnr").val("");
-      $("#epost").val("");
-    }
-
-    function hentAlle() {
-      // Utfører en GET-request for å hente alle billetter
-      $.get("/hentAlle", function(kinobilletter) {
-        formaterData(kinobilletter); // Formaterer og viser billettene
-      });
-    }
-
-    function formaterData(kinobilletter) {
-      let ut = "<table><tr><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
-      // Går gjennom alle billetter og legger dem til i tabellen
-      for(const kinobillett of kinobilletter) {
-        ut += "<tr><td>" + kinobillett.Fornavn + "</td><td>" + kinobillett.Etternavn + "</td><td>" + kinobillett.Telefonnr + "</td><td>" + kinobillett.Epost + "</td></tr>";
-      }
-      ut += "</table>";
-      $("#kinobillettene").html(ut); // Setter inn tabellen i HTML-elementet
-    }
-
-    function slettAlle() {
-      // Utfører en GET-request for å slette alle billetter
-      $.get( "/slettAlle", function() {
-        hentAlle(); // Oppdaterer listen etter at alle billetter er slettet
-      });
-    }
-  </script>
 </head>
+
 <body>
 <h1>Bestilling av kinobilletter</h1>
 <!--https://www.w3schools.com/tags/tag_select.asp dropdown meny for valg av film-->
@@ -110,9 +41,6 @@
     <td><input type="text" id="epost"><span id="epost-feilmelding" style="color: red;"></span></td>
   </tr>
 </table>
-
-<!--registrerer den nye infoen i arrayet-->
-kinobillettRegister.push(kinobillett);
 
 <!--viser data i array-->
 <button onclick="visKinobillettRegister()">Kjøp billett</button><br>
