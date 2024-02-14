@@ -29,15 +29,19 @@
             epost : epost,
         };
 
-        // Tømmer input-boksene
+        // Registrerer den nye infoen i arrayet
         kinobillettRegister.push(registrert);
+
+        // Viser den nye infoen i arrayet
+        visKinobillettRegister();
+
+        // Sletter info fra input-boksene
         document.getElementById("filmer").value="";
         document.getElementById("antall").value="";
         document.getElementById("fornavn").value="";
         document.getElementById("etternavn").value="";
         document.getElementById("telefonnr").value="";
         document.getElementById("epost").value="";
-        visKinobillettRegister()
     }
 
     // Skriver ut array med registrerte
@@ -53,21 +57,7 @@
     document.getElementById("kinobillettRegister").innerHTML=ut;
 }
 
-function regKinobillett() {
-    const kinobillett = {
-        Film: $("#filmer").val(),
-        Antall: $("#antall").val(),
-        Fornavn: $("#fornavn").val(),
-        Etternavn: $("#etternavn").val(),
-        Telefonnr: $("#telefonnr").val(),
-        Epost: $("#epost").val()
-};
 
-    // Registrerer den nye infoen i arrayet
-    kinobillettRegister.push(kinobillett);
-
-    // Viser den nye infoen i arrayet
-    visKinobillettRegister();
 
     // Sletter info i inputboksene
     $("#filmer").val("");
