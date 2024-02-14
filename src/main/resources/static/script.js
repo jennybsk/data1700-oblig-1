@@ -1,7 +1,7 @@
     // Oppretter array for billettregister
     const kinobillettRegister=[];
 
-    // Velg film funksjon
+    // Funksjon for valg av film
     function VelgFilmer() {
     ut += "FilmValg : "+ document.getElementById("filmer").value;
 }
@@ -55,18 +55,6 @@
     ut+="</tr>";
 }
     document.getElementById("kinobillettRegister").innerHTML=ut;
-}
-
-
-
-    // Sletter info i inputboksene
-    $("#filmer").val("");
-    $("#antall").val("");
-    $("#fornavn").val("");
-    $("#etternavn").val("");
-    $("#telefonnr").val("");
-    $("#epost").val("");
-}
 
 function slettAlle() {
     // Utfører GET-request for å slette alle billetter
